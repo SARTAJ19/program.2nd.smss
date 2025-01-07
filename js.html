@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
+</head>
+<body>
+     
+  <div class="container p-5">
+    <div class="col">
+        <div class="form-group">
+            <label for="">UserName</label>
+            <input type="text" name="" id="username" class="form-control" placeholder="" aria-describedby="helpId">
+            <small id="helpId" class=""></small>
+          </div>
+          
+          <div class="form-group">
+            <label for="">Email</label>
+            <input type="text" name="" id="useremail" class="form-control" placeholder="" aria-describedby="helpId">
+            <small id="helpId" class=""></small>
+          </div>
+          
+          <div class="form-group">
+            <label for="">Password</label>
+            <input type="text" name="" id="userPassword" class="form-control" placeholder="" aria-describedby="helpId">
+            <small id="helpId" class=""></small>
+          </div>
+          
+          <div class="form-group">
+            <label for="">Conform Password</label>
+            <input type="text" name="" id="userConfirmPassword" class="form-control" placeholder="" aria-describedby="helpId">
+            <small id="helpId" class=""></small>
+          </div>
+          <button class="btn btn-info">Add user</button>
+    </div>
+    
+      
+  
+  </div>
+
+ <script src="jquery-3.7.1.js"></script>
+ <script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+ 
+  <script>
+    //USER NAME//
+        $("#username").keyup(function(){
+            let uName = $(this).val();
+            // console.log(uName);
+            let uNameRE = /^[a-z]{3,}$/;
+             if (!(uNameRE.test(uName))){
+                $(this).css("border", "1px solid red")
+                $(this).next('small').show().text('Please fill this field correctly').css('color', 'red')
+            }
+            else{
+              $(this).css('border','2px solid blue');
+              $(this).next('small').hide();
+            }
+          
+        });
+
+        //email//
+        $("#useremail").keyup(function(){
+          let uemail=$(this).val();
+          // console.log(uemail)
+          let uemailRE=/^[a-z0-9_.]{3,20}[@][a-z]{5}[.][a-z]{3}$/;
+          if (!(uemailRE.test(uemail))){
+                $(this).css("border", "1px solid red")
+                $(this).next('small').show().text('Please enter your Email').css('color', 'red')
+            }
+
+            else{
+              $(this).css('border','2px solid blue');
+              $(this).next('small').hide();
+            }
+          
+        });
+        //password//
+        $("#userPassword").keyup(function(){
+          let upassword=$(this).val();
+          // console.log(userpassword)
+          let upasswordRE=/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^a-zA-Z\d]).{8,}$/;
+          if (!(upasswordRE.test(upassword))){
+                $(this).css("border", "1px solid red")
+                $(this).next('small').show().text('Please enter your PASSWORD').css('color', 'red')
+            }
+
+            else{
+              $(this).css('border','2px solid blue');
+              $(this).next('small').hide();
+            }
+          
+          
+        });
+
+
+        //Conformpassword//
+        $("#userConformPassword").keyup(function(){
+          let upassword=$("#userPassword").val();
+          let uConformPassword=$(this).val();
+          // console.log(userconfirmpassword)
+        
+          if  (upassword !== uConformPassword){
+                $("#userConformPassword").css("border", "1px solid red")
+                $("#userConformPassword").next('small').show().text('Please enter your CONFIRM PASSWORD').css('color', 'red')
+            }
+
+            else{
+              $("#userConformPassword").css('border','2px solid blue');
+              $("#userConformPassword").next('small').hide();
+            }
+          
+          
+        });
+            
+  </script>
+</body>
+</html>
