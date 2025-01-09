@@ -24,13 +24,13 @@
           
           <div class="form-group">
             <label for="">Password</label>
-            <input type="text" name="" id="userPassword" class="form-control" placeholder="" aria-describedby="helpId">
+            <input type="text" name="" id="userpassword" class="form-control" placeholder="" aria-describedby="helpId">
             <small id="helpId" class=""></small>
           </div>
           
           <div class="form-group">
             <label for="">Conform Password</label>
-            <input type="text" name="" id="userConfirmPassword" class="form-control" placeholder="" aria-describedby="helpId">
+            <input type="text" name="" id="userconfirmpassword" class="form-control" placeholder="" aria-describedby="helpId">
             <small id="helpId" class=""></small>
           </div>
           <button class="btn btn-info">COMPLETE</button>
@@ -48,13 +48,13 @@
         $("#username").keyup(function(){
             let uName = $(this).val();
             // console.log(uName);
-            let uNameRE = /^[a-z]{3,}$/;
+            let uNameRE = /^[a-zA-Z\s]{3,}$/;
              if (!(uNameRE.test(uName))){
                 $(this).css("border", "1px solid red")
                 $(this).next('small').show().text('Please fill this field correctly').css('color', 'red')
             }
             else{
-              $(this).css('border','2px solid blue');
+              $(this).css('border','2px solid green');
               $(this).next('small').hide();
             }
           
@@ -71,14 +71,14 @@
             }
 
             else{
-              $(this).css('border','2px solid blue');
+              $(this).css('border','2px solid green');
               $(this).next('small').hide();
             }
           
         });
         //password//
-        $("#userPassword").keyup(function(){
-          let upassword=$(this).val();
+        $("#userpassword").keyup(function(){
+          let upassword= $(this).val();
           // console.log(userpassword)
           let upasswordRE=/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^a-zA-Z\d]).{8,}$/;
           if (!(upasswordRE.test(upassword))){
@@ -87,7 +87,7 @@
             }
 
             else{
-              $(this).css('border','2px solid blue');
+              $(this).css('border','2px solid green');
               $(this).next('small').hide();
             }
           
@@ -96,23 +96,29 @@
 
 
         //Conformpassword//
-        $("#userConformPassword").keyup(function(){
-          let upassword=$("#userPassword").val();
+        $("#userconfirmpassword").keyup(function(){
+          let upassword=$("#userpassword").val();
           let uConformPassword=$(this).val();
-          // console.log(userconfirmpassword)
+          console.log(uConformPassword)
         
           if  (upassword !== uConformPassword){
-                $("#userConformPassword").css("border", "1px solid red")
-                $("#userConformPassword").next('small').show().text('Please enter your CONFIRM PASSWORD').css('color', 'red')
+                $("#userconfirmpassword").css("border", "1px solid red")
+                $("#userconfirmpassword").next('small').show().text('Please enter your CONFIRM PASSWORD').css('color', 'red')
             }
 
             else{
-              $("#userConformPassword").css('border','2px solid blue');
-              $("#userConformPassword").next('small').hide();
+              $("#userconfirmpassword").css('border','2px solid green');
+              $("#userconfirmpassword").next('small').hide();
             }
           
           
         });
+        function emptyFields(inp){
+          if($(inp).val()==""){
+            $(inp).css('border','1px solid red')
+            $(this).next('small').show().text('Please enter your PASSWORD').css('color', 'red')
+          }
+        }
             
         $("button").click(function(){
         let username =$("#username").val();
@@ -124,7 +130,7 @@
         emptyFields("#useremail");
         emptyFields("#userpassword");
         emptyFields("#userconfirmpassword");
-        let uNameRE = /^[a-z]{3,}$/;
+        let uNameRE = /^[a-zA-Z\s]{3,}$/;
         let uemailRE=/^[a-z0-9_.]{3,20}[@][a-z]{5}[.][a-z]{3}$/;
         let upasswordRE=/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^a-zA-Z\d]).{8,}$/;
         let users = JSON.parse(localStorage.getItem(students)) || [];
@@ -134,7 +140,7 @@
           localStorage.setItem('students',JSON.stringify(user));
           alert('user add successfully');
           $('input').val('');
-          location.assign('regularExpression.html')
+          location.assign('select.html')
 
         }
         });
