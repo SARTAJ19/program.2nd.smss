@@ -13,31 +13,45 @@
  <script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
  <script>
     class Human{
-        eat(name , food){
-           return "this student " + name + " eat " + food  ;
+
+       name ;
+       food ;
+       lang ;
+
+       constructor(sname,sfood,slang){
+        this.name = sname ;
+        this.food = sfood ;
+        this.lang = slang ;
+        console.log('constructor run');
+       }
+
+
+        eat(){
+           return "this student " + this.name + " eat " + this.food  ;
         }
-        speak(language){
-            return "this student "+ language + " speak "  ;
+        speak(){
+            return "this student "+ this.name + " speak " + this.lang  ;
 
         }
     }
-    let std1 = new Human();
-    console.log(std1.eat('Ahmed','burger'));
-    console.log(std1.speak('farsi'));
-    let std2 = new Human();
-    console.log(std2.eat('Raza','pizza',));
-    console.log(std2.speak('balti'));
-    let std3 = new Human();
-    console.log(std3.eat('Ali','pasta',));
-    console.log(std3.speak('arbic'));
 
-    let std4 = new Human();
-    console.log(std4.eat('M.Ali','biryani'));
-    console.log(std4.speak('english'));
+    let std1 = new Human('Ahmed','burger','farsi');
+    console.log(std1.eat());
+    console.log(std1.speak());
+    let std2 = new Human('Raza','pizza','balti');
+    console.log(std2.eat());
+    console.log(std2.speak());
+    let std3 = new Human('Ali','pasta','arbic');
+    console.log(std3.eat());
+    console.log(std3.speak());
+
+    let std4 = new Human('M.Ali','biryani','english');
+    console.log(std4.eat());
+    console.log(std4.speak());
     
-    let std5 = new Human();
-    console.log(std5.eat('bilal','samosa',));
-    console.log(std5.speak('urdu'));
+    let std5 = new Human('bilal','samosa','urdu');
+    console.log(std5.eat());
+    console.log(std5.speak());
  </script>
 </body>
 </html>

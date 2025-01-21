@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
+</head>
+<body>
+
+
+<script>
+    class Employ{
+     name ;
+     id ;
+    constructor(sname,sid){
+    this.name = sname;
+    this.id = sid;
+    console.log('constructor run');
+}
+
+     detail(){
+        return   this.id +  "for " + this.name ;
+     }
+
+    }
+
+    let amp1 = new Employ('01','ali');
+    console.log(amp1.detail());
+    
+    let amp2 = new Employ('02','aqsa');
+    console.log(amp2.detail());
+    
+    let amp3 = new Employ('03','asad');
+    console.log(amp3.detail());
+    
+  
+    
+
+</script>
+
+
+
+    <script src="jquery-3.7.1.js"></script>
+ <script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+</body>
+</html>
