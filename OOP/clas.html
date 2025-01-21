@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
+</head>
+<body>
+ 
+ 
+    <script src="jquery-3.7.1.js"></script>
+ <script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+ <script>
+    class Human{
+        eat(name , food){
+           return "this student " + name + " eat " + food  ;
+        }
+        speak(language){
+            return "this student "+ language + " speak "  ;
+
+        }
+    }
+    let std1 = new Human();
+    console.log(std1.eat('Ahmed','burger'));
+    console.log(std1.speak('farsi'));
+    let std2 = new Human();
+    console.log(std2.eat('Raza','pizza',));
+    console.log(std2.speak('balti'));
+    let std3 = new Human();
+    console.log(std3.eat('Ali','pasta',));
+    console.log(std3.speak('arbic'));
+
+    let std4 = new Human();
+    console.log(std4.eat('M.Ali','biryani'));
+    console.log(std4.speak('english'));
+    
+    let std5 = new Human();
+    console.log(std5.eat('bilal','samosa',));
+    console.log(std5.speak('urdu'));
+ </script>
+</body>
+</html>

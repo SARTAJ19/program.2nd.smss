@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container p-5">
+  
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>NAME</th>
+                    <th>EMAIL</th>
+                    <th>PASSWORD</th>
+                    <th>ACTION</th>
+                    <th>ACTION</th>
+                </tr>
+            </thead>
+            <tbody>
+           
+            </tbody>
+        </table>
+    </div>
+
+    <button
+        type="button"
+        class="btn btn-primary btn-lg"
+        data-bs-toggle="modal"
+        data-bs-target="#modalId"
+    >
+        Launch
+    </button>
+
+    <div class="modal fade" id="modalId" tabindex="-1" aria-labelledby="modalTitleId" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitleId">Edit User</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="modalForm">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="useremail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="useremail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="userpassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="userpassword" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="saveData()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="jquery-3.7.1.js"></script>
+<script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+
+<script>
+    let allStudents = JSON.parse(localStorage.getItem('students')) || [];
+
+   
+    function selectData() {
+        $('tbody').empty();
+        allStudents.forEach((element, index) => {
+            $('tbody').append(`
+                <tr>
+                    <td>`+element.stdName+`</td>
+                    <td>`+element.stdemail+`</td>
+                    <td>`+element.stdpassword+`</td>
+                    <td>
+                        <button onclick="editData(`+index+`)" class="btn
+                         btn-info">Edit</button>
+                      
+                    </td>
+                     <td>
+                      <button onclick="removedata(`+index+`)" class="btn
+                         btn-danger">remove</button>
+                    </td>
+                </tr>
+            `);
+        });
+    }
+    
+  
+    function editData(index) {
+        const student = allStudents[index];
+        $('#username').val(student.stdName);
+        $('#useremail').val(student.stdemail);
+        $('#userpassword').val(student.stdpassword);
+
+
+        $('#modalId').data('editIndex', index);
+    }
+
+
+    function saveData() {
+        const index = $('#modalId').data('editIndex');
+        const updatedStudent = {
+            stdName: $('#username').val(),
+            stdemail: $('#useremail').val(),
+            stdpassword: $('#userpassword').val()
+        };
+
+        if (index !== undefined) {
+            allStudents[index] = updatedStudent;
+        } else {
+            allStudents.push(updatedStudent); 
+        }
+
+        localStorage.setItem('student', JSON.stringify(allStudents));
+        selectData();
+        $('#modalId').modal('hide'); 
+    }
+
+  
+    selectData();
+</script>
+</body>
+</html>
